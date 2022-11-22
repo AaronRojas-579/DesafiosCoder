@@ -1,0 +1,26 @@
+.navSession {
+  background-color: greenyellow;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  width: auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0rem 5rem;
+  border: 2px black solid;
+}
+
+.navSession a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: black;
+}
+/*# sourceMappingURL=styles.css.map */

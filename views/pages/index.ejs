@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- IMPORTANTE!! PARA AGREGAR LOS ESTILOS COLOCAR LOS ESTILOS EN LA CARPETA ESTATICA(en este caso la carpeta public) Y COLOCAR EL HREF COMO SI ESTUVIERA DENTRO DE LA CARPETA ESTATICA SI EL "." DEL COMIENZO -->
+    <title>Document</title>
+</head>
+<body>
+    <%- include('../partials/nav.ejs') %>
+    <h3>Tabla de 5 Productos aleatorios con Faker</h3>
+    <% if(productosFaker.length !== 0 ){ %>
+        <%- include('../partials/tabla.ejs') %>
+    <%}else{%>
+        <h3>No ha encontrado datos</h3>
+    <%}%>
+</body>
+</html>
