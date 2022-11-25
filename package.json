@@ -26,5 +26,13 @@
     "redis": "^4.5.0",
     "session-file-store": "^1.5.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AaronRojas-579/DesafiosCoder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AaronRojas-579/DesafiosCoder/issues"
+  },
+  "homepage": "https://github.com/AaronRojas-579/DesafiosCoder#readme",
   "description": ""
 }

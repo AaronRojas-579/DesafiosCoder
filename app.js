@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
-const router = require("./rutas/rutas")
+const {router} = require("./rutas/rutas")
+const {routerInfo} = require("./rutas/info")
 //Siempre para ustilizar sessions
 const session = require("express-session")
 const cookieParser = require("cookie-parser")
@@ -39,6 +40,8 @@ app.set('views',__dirname+'/views');
 //Midleware y Rutas
 app.use(express.static(__dirname+"/public"))
 app.use('/session',router)
+app.use('/info',routerInfo)
+
 
 
 

@@ -15,12 +15,17 @@ router.post('/login', passport.authenticate('login',{
     //Redireccion en caso del login correcto
     successRedirect:'./',
     //Redireccion en caso del login incorrecto
-    failureRedirect: '/',
+    failureRedirect: './login/error',
 }))
 router.post('/register',passport.authenticate('singup',{
     successRedirect:'/',
-    failureRedirect:'/'
+    failureRedirect:'./login/error'
 }))
+router.get('/login/error',(req,res)=>{
+    res.render("pages/errorLogin.ejs")
+} )
+router.get('/register/error',(req,res)=>{
+    res.render("pages/errorRegister.ejs")
+} )
 
-
-module.exports = router
+module.exports = {router}

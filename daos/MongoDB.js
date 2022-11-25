@@ -1,5 +1,5 @@
 const mongoose = require ("mongoose");
-
+require('dotenv').config()
 class MongoAltlas{
     constructor (model){
         this.model = model;
@@ -7,7 +7,7 @@ class MongoAltlas{
     }
     connect(){
         try{
-            const URL = "mongodb+srv://aaronrojas:aTS3dsE5dG8Q3nUc@cluster0.iy3iqn0.mongodb.net/usuarios";
+            const URL = process.env.MONGODB;
             mongoose.connect(URL,{
                 useNewUrlParser:true,
                 useUnifiedTopology:true,
