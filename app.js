@@ -38,7 +38,8 @@ app.use(passport.session());
 app.set('view engine','ejs');
 app.set('views',__dirname+'/views');
 //Midleware y Rutas
-app.use(express.static(__dirname+"/public"))
+// app.use(express.static(__dirname+"/public"))
+//La comentamos porque no lo vamos a necesitar ya que el proxy lo abre 
 app.use('/session',router)
 app.use('/info',routerInfo)
 

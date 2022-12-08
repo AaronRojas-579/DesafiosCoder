@@ -8,6 +8,7 @@ const {fork} = require("child_process")
 routerInfo.get("/",(req,res)=>{
 
     res.json({
+        "Cantidad de hilos de ejecució":require("os").cpus().length,
         "Argumentos de entrada":process.argv.slice(2),
         "Path de ejecución":process.argv[0],
         "Carpeta del Proyecto":process.argv[1],
