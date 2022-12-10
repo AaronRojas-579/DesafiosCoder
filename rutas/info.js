@@ -2,6 +2,8 @@ const express = require("express")
 const {Router} = express
 const routerInfo= Router()
 
+//Vemos si puede agarrar el PORT creado
+const PORT = (process.argv.slice(2))[0]||8080;
 //Requerimos Fork
 const {fork} = require("child_process")
 

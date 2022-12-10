@@ -1,0 +1,17 @@
+
+COMANDOS QUE UTILICE PARA PROBAR EL BALANCEADOR DE CARGAR PARA LAS RUTAS 
+/DATOS , /INFO y /INFO/API/RANDOMS
+
+npx pm2 start server.js --name="Server 1" --watch 8080
+npx pm2 start server.js --name="Server 2" --watch -i 4 -- 8082
+npx pm2 start server.js --name="Server 3" --watch -- 8083
+npx pm2 start server.js --name="Server 4" --watch -i 2 -- 8084 
+npx pm2 start server.js --name="Server 4" --watch -i 2 -- 8085
+
+OTROS COMANDOS USADOS CON NODEMON Y FOREVER 
+
+nodemon server.js 8080 FORK
+nodemon server.js 8082 CLUSTER
+
+forever start server.js 8080 FORK
+forever start server.js 8082 CLUSTER

@@ -27,9 +27,6 @@ if(modo == "CLUSTER" && cluster.isPrimary){
     }
 }
 
-app.listen(PORT,()=>{
-    console.log(`Server listen on PORT ${PORT}`)
-})
 app.get("/datos",(req,res)=>{
     res.send(`Servidor Express - PORT ${PORT} - PID ${process.pid} - Fecha: ${new Date().toLocaleString()}` )
 })
