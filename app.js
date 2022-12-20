@@ -31,6 +31,14 @@ app.use(session({
 //Recordar que estos datos tienen un tiempo de vida o tambien se eliminan cuando salen del navegador y cuando se aplica la funcion destroy() que esta en la ruta /logout
 }));
 
+//Ruta no existente en el servidor 
+app.use("*",(req,res)=>{
+  const {method} = req
+  const {path} =req._parsedOriginalUrl
+  res.send(`No existe la ruta especificada ${path} con el metodo ${method}`)
+})
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 
