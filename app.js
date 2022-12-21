@@ -13,8 +13,12 @@ app.use(cookieParser())
 
 //Importamos Passport 
 const {passport} = require('./controllers/passport')
-//Inicilizamos Passport
 
+//Requerimos los Loggers
+const {loggerConsola,loggerWarn,loggerError} = require("./logger")
+
+
+//Inicilizamos Passport
 app.use(session({
  secret: 'keyboard cat',
  cookie: {
@@ -33,6 +37,7 @@ app.use(session({
 
 //Ruta no existente en el servidor 
 app.use("*",(req,res)=>{
+  loggerWarn.warn(`El usuario ingreso a una ruta inexistente`)
   const {method} = req
   const {path} =req._parsedOriginalUrl
   res.send(`No existe la ruta especificada ${path} con el metodo ${method}`)
@@ -50,7 +55,6 @@ app.set('views',__dirname+'/views');
 //La comentamos porque no lo vamos a necesitar ya que el proxy lo abre 
 app.use('/session',router)
 app.use('/info',routerInfo)
-
 
 
 

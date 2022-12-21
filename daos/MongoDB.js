@@ -1,5 +1,8 @@
 const mongoose = require ("mongoose");
 require('dotenv').config()
+
+const {loggerConsola,loggerWarn,loggerError} = require("../logger")
+
 class MongoAltlas{
     constructor (model){
         this.model = model;
@@ -12,23 +15,23 @@ class MongoAltlas{
                 useNewUrlParser:true,
                 useUnifiedTopology:true,
             })
-            console.log("Database conectada")
+            loggerConsola.info("Database conectada")
         }catch(err){
-            console.log(err)
+            loggerError.error(err)
         }
     }
     async save (nuevoObjeto){
         try{
             if(nuevoObjeto.length != undefined){
                 await this.model.insertMany(nuevoObjeto)
-                console.log("Nuevos Usuarios Creados")
+                loggerConsola.info("Nuevos Usuarios Creados")
             }else{
                 const newMensaje = new this.model(nuevoObjeto);
                 await newMensaje.save();
-                console.log("Nuevo Usuario Creado")
+                loggerConsola.info("Nuevo Usuario Creado")
             }
         }catch(err){
-            console.log(err);
+            loggerError.error(err);
         }
     }
     async getAll (){
@@ -36,7 +39,7 @@ class MongoAltlas{
             const data = await this.model.find({});
             return data;
         }catch(err){
-            console.log(err)
+            loggerError.error(err)
         }
     }
     async getById (idABuscar){
@@ -44,40 +47,40 @@ class MongoAltlas{
             const data = await this.model.find({_id:idABuscar});
             return data;
         }catch(err){
-            console.log(err)
+            loggerError.error(err)
         }
     }
     async getByUsername (username){
         try{
             const data = await this.model.find({username:username});
-            console.log(data)
+            loggerConsola.info(data)
             return data;
         }catch(err){
-            console.log(err)
+            loggerError.error(err)
         }
     }
     async updateById (idAModificar,modificaciones){
         try{
             await this.model.updateOne({"_id":idAModificar},{$set:modificaciones})
-            console.log("Usuario Modificado")
+            loggerConsola.info("Usuario Modificado")
         }catch(err){
-            console.log(err)
+            loggerError.error(err)
         }
     }
     async deleteById (idAEliminar){
         try{
             await this.model.deleteOne({_id:idAEliminar});
-            console.log("Usuario Eliminado")
+            loggerConsola.info("Usuario Eliminado")
         }catch(err){
-            console.log(err)
+            loggerError.error(err)
         }
     }
     async deleteAll(){
         try{
             await this.model.deleteMany({});
-            console.log("Todos los Usuarios han sido eliminados")
+            loggerConsola.info("Todos los Usuarios han sido eliminados")
         }catch(err){
-            console.log(err)
+            loggerError.error(err)
         }
     }
 }

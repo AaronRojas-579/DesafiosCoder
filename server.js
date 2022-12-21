@@ -6,24 +6,27 @@ const modo = process.argv.slice(2)[1] || "FORK"
 
 const PORT = (process.argv.slice(2))[0]||8080;
 
+//Requerimos los Loggers
+const {loggerConsola,loggerWarn,loggerError} = require("./logger")
+
 if(modo == "CLUSTER" && cluster.isPrimary){
     const numCPUs = require("os").cpus().length
-    console.log(`Numero de procesadores ${numCPUs}`)
-    console.log(`PID MASTER ${process.pid}`)
+    loggerConsola.info(`Numero de procesadores ${numCPUs}`)
+    loggerConsola.info(`PID MASTER ${process.pid}`)
     for(let i = 0; i < numCPUs ; i++){
         cluster.fork()
     }
     cluster.on("exit",worker=>{
-        console.log(`Worker `, worker.process.pid, ` died`, new Date().toLocaleString())
+        loggerConsola.info(`Worker `, worker.process.pid, ` died`, new Date().toLocaleString())
     })
 }else{
     try{
         app.listen(PORT,()=>{
-            console.log(`Server listen on port ${PORT}`)
+            loggerConsola.info(`Server listen on port ${PORT}`)
         })
-        console.log(`Worker ${process.pid} started`)
+        loggerConsola.info(`Worker ${process.pid} started`)
     }catch(error){
-        console.log(error)
+        loggerError.error(error)
     }
 }
 

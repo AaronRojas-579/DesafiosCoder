@@ -4,6 +4,9 @@ const routerInfo= Router()
 //aplicamos compression gzip, primero la requerimos
 const compression = require("compression")
 
+//Requerimos los Loggers
+const {loggerConsola,loggerWarn,loggerError} = require("../logger")
+
 //Requerimos Fork
 const {fork} = require("child_process")
 
@@ -24,12 +27,22 @@ const objInfo = {
 };
 
 routerInfo.get("/",(req,res)=>{
+    //Sin usar el logger , usando el console.log para analizarlos
+    //Sincronico
     console.log(objInfo)
     res.json(objInfo)
 })
 
+routerInfo.get("/logger",(req,res)=>{
+    //Sin usar el logger , usando el console.log para analizarlos
+    //Asincronico
+    loggerConsola.info(objInfo)
+    res.json(objInfo)
+})
+
 routerInfo.get("/compression",compression(),(req,res)=>{
-    console.log(objInfo)
+    //Usando el logger
+    loggerConsola.info(objInfo)
     res.json(objInfo)
 })
 
