@@ -31,7 +31,9 @@ if(modo == "CLUSTER" && cluster.isPrimary){
         loggerError.error(error)
     }
 }
-
 app.get("/datos",(req,res)=>{
     res.send(`Servidor Express - PORT ${PORT} - PID ${process.pid} - Fecha: ${new Date().toLocaleString()}` )
+})
+app.get("/hola",(req,res)=>{
+    res.send(`Soy el mensaje de prueba`)
 })
