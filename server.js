@@ -4,7 +4,9 @@ const cluster = require("cluster")
 
 const modo = process.argv.slice(2)[1] || "FORK"
 
-const PORT = (process.argv.slice(2))[0]||8080;
+//Requerimos dotenv para acceder a las variables de entorno
+require("dotenv").config()
+const PORT = process.env.PORT||8080;
 
 //Requerimos los Loggers
 const {loggerConsola,loggerWarn,loggerError} = require("./logger")
